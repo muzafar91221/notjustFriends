@@ -1,4 +1,3 @@
-
 import { StyleSheet, Text, Image, View, Pressable } from "react-native";
 import {
   Entypo,
@@ -48,10 +47,6 @@ export default function FeedPost({ post }) {
           <Text style={styles.shares}>{post.numberOfShares} shares</Text>
         </View>
         <View style={styles.buttonsRow}>
-          <View style={styles.iconButton}>
-            <AntDesign name="like2" size={18} color="gray" />
-            <Text style={styles.iconButtonText}>Like</Text>
-          </View>
           <Pressable
             onPress={() => setIsLiked(!isLiked)}
             style={styles.iconButton}
