@@ -14,6 +14,9 @@ const user = {
 
 const CreatePost = () => {
   const [description, setdescription] = useState("");
+  const [postimage, setpostimage] = useState(null)
+
+
   const log = () => {
     console.warn(description);
     setdescription("");
@@ -29,9 +32,10 @@ const CreatePost = () => {
     console.log(result);
   
     if (!result.canceled) {
-      setImage(result.uri);
+      setpostimage(result.uri);
     }
   };
+
   return (
     <View style={styles.postcontainer}>
       <View style={styles.header}>
@@ -53,6 +57,7 @@ const CreatePost = () => {
         onChangeText={setdescription}
         style={styles.placeholder}
       />
+      <Image source={{uri:postimage}} style={styles.setterimage} />
 
       <View style={styles.Button}>
         <Button title="Post" onPress={() => log()} />
@@ -99,5 +104,9 @@ const styles = StyleSheet.create({
 //   icon
   icon:{
     marginLeft:'auto'
+  },
+  setterimage:{
+    width:'50%',
+    aspectRatio:1,
   }
 });

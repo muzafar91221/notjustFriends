@@ -10,6 +10,7 @@ import { useState } from "react";
 
 /* Post component */
 export default function FeedPost({ post }) {
+  
   const [isLiked, setIsLiked] = useState(false);
 
   return (
