@@ -1,9 +1,8 @@
 import { StyleSheet, Text, View, Image, TextInput, Button } from "react-native";
 import React, { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
-import {
-    Entypo
-  } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const user = {
   id: "u1",
@@ -13,11 +12,19 @@ const user = {
 };
 
 const CreatePost = () => {
+
   const [description, setdescription] = useState("");
-  const log = () => {
-    console.warn(description);
+  const [postimage, setPostimage] = useState(null);
+
+  const navigation = useNavigation();
+
+  // function for post button
+  const submit = () => {
     setdescription("");
+    navigation.goBack();
   };
+
+  // function for image picker
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -25,13 +32,14 @@ const CreatePost = () => {
       aspect: [4, 3],
       quality: 1,
     });
-  
+
     console.log(result);
-  
+
     if (!result.canceled) {
-      setImage(result.uri);
+      setPostimage(result.uri);
     }
   };
+
   return (
     <View style={styles.postcontainer}>
       <View style={styles.header}>
@@ -46,16 +54,20 @@ const CreatePost = () => {
         />
       </View>
 
-      <TextInput
-        placeholder="whats in your mind"
-        multiline
-        value={description}
-        onChangeText={setdescription}
-        style={styles.placeholder}
-      />
-
+      <View>
+        <TextInput
+          placeholder="whats in your mind"
+          multiline
+          value={description}
+          onChangeText={setdescription}
+          style={styles.placeholder}
+        />
+        <Image source={{ uri: postimage }} style={styles.postimage} />
+      </View>
+      
+    {/* button to submit the data */}
       <View style={styles.Button}>
-        <Button title="Post" onPress={() => log()} />
+        <Button title="Post" onPress={() => submit()} />
       </View>
     </View>
   );
@@ -96,8 +108,13 @@ const styles = StyleSheet.create({
     marginTop: "auto",
     padding: 10,
   },
-//   icon
-  icon:{
-    marginLeft:'auto'
-  }
+  //   icon
+  icon: {
+    marginLeft: "auto",
+  },
+  postimage: {
+    width: "100%",
+    aspectRatio: 1,
+    
+  },
 });
