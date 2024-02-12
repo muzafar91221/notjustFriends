@@ -12,6 +12,7 @@ import ProfileScreen from "../screens/ProfileScreen";
 
 /* Post component */
 export default function FeedPost({ post }) {
+  
   const [isLiked, setIsLiked] = useState(false);
 
   const navigation = useNavigation();
