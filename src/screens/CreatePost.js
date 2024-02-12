@@ -14,20 +14,11 @@ const user = {
 const CreatePost = () => {
 
   const [description, setdescription] = useState("");
-<<<<<<< HEAD
-  const [postimage, setPostimage] = useState(null);
-
-  const navigation = useNavigation();
-
-  // function for post button
-  const submit = () => {
-=======
   const [postimage, setpostimage] = useState(null)
 
 
   const log = () => {
     console.warn(description);
->>>>>>> cb5df535e2b1759b25c30406aed5a72d617c2df2
     setdescription("");
     navigation.goBack();
   };
@@ -44,11 +35,7 @@ const CreatePost = () => {
     console.log(result);
 
     if (!result.canceled) {
-<<<<<<< HEAD
-      setPostimage(result.uri);
-=======
       setpostimage(result.uri);
->>>>>>> cb5df535e2b1759b25c30406aed5a72d617c2df2
     }
   };
 
@@ -66,20 +53,6 @@ const CreatePost = () => {
         />
       </View>
 
-<<<<<<< HEAD
-      <View>
-        <TextInput
-          placeholder="whats in your mind"
-          multiline
-          value={description}
-          onChangeText={setdescription}
-          style={styles.placeholder}
-        />
-        <Image source={{ uri: postimage }} style={styles.postimage} />
-      </View>
-      
-    {/* button to submit the data */}
-=======
       <TextInput
         placeholder="whats in your mind"
         multiline
@@ -89,7 +62,6 @@ const CreatePost = () => {
       />
       <Image source={{uri:postimage}} style={styles.setterimage} />
 
->>>>>>> cb5df535e2b1759b25c30406aed5a72d617c2df2
       <View style={styles.Button}>
         <Button title="Post" onPress={() => submit()} />
       </View>
@@ -132,17 +104,6 @@ const styles = StyleSheet.create({
     marginTop: "auto",
     padding: 10,
   },
-<<<<<<< HEAD
-  //   icon
-  icon: {
-    marginLeft: "auto",
-  },
-  postimage: {
-    width: "100%",
-    aspectRatio: 1,
-    
-  },
-=======
 //   icon
   icon:{
     marginLeft:'auto'
@@ -151,5 +112,4 @@ const styles = StyleSheet.create({
     width:'50%',
     aspectRatio:1,
   }
->>>>>>> cb5df535e2b1759b25c30406aed5a72d617c2df2
 });

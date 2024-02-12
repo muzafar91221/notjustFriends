@@ -1,18 +1,9 @@
-<<<<<<< HEAD
-import { FlatList, ScrollView,Pressable,StyleSheet,Image,Text } from "react-native";
+import { FlatList,Pressable,StyleSheet,Image,Text } from "react-native";
 import FeedPost from "../components/FeedPost";
 import posts from "../../assets/data/posts.json";
 import { useNavigation } from "@react-navigation/native";
 import {Entypo} from "@expo/vector-icons"
 
-
-=======
-import { FlatList, ScrollView,Pressable,Text,Image,StyleSheet, } from "react-native";
-import FeedPost from "../components/FeedPost";
-import posts from "../../assets/data/posts.json";
-import CreatePost from "./CreatePost";
-import { Entypo } from "@expo/vector-icons";
->>>>>>> cb5df535e2b1759b25c30406aed5a72d617c2df2
 
 const img =
   "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/user.png";
@@ -42,12 +33,9 @@ const FeedScreen = () => {
         />
       </Pressable>
     )}
-<<<<<<< HEAD
-=======
     
     
     
->>>>>>> cb5df535e2b1759b25c30406aed5a72d617c2df2
     />
   );
 };
@@ -74,7 +62,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
   header:{
     padding: 10,
     paddingVertical: 18,

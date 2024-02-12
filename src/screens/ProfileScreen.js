@@ -5,6 +5,7 @@ import {
   Image,
   TouchableOpacity,
   FlatList,
+  ScrollView,
 } from "react-native";
 import FeedPost from "../components/FeedPost";
 import React from "react";
@@ -25,67 +26,71 @@ const dummy_img =
 
 const ProfileScreen = () => {
   return (
+
     <View style={styles.headerconatainer}>
-      <View style={styles.header}>
-        <Image source={{ uri: bg }} style={styles.image} />
-        <Image source={{ uri: dummy_img }} style={styles.porfileImage} />
-        <Text style={styles.name}>ProfileScreen</Text>
-      </View>
-
-      {/* button container */}
-      <View style={styles.buttoncontainer}>
-        <TouchableOpacity style={styles.btn}>
-          <AntDesign name="plus" width={22} color={"white"} />
-          <Text style={styles.btntxt}>Add to story</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.btn}>
-          <MaterialCommunityIcons name="pencil" width={22} color={"white"} />
-          <Text style={styles.btntxt}>Edit Profile</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.btn, { width: "50", flex: 0, aspectRatio: 1 }]}
-        >
-          <MaterialCommunityIcons name="logout" width={22} color={"white"} />
-        </TouchableOpacity>
-      </View>
-
-      {/* data texxt  */}
-      <View style={styles.textdata}>
-        <View style={styles.textLine}>
-          <Entypo
-            name="graduation-cap"
-            size={18}
-            color="gray"
-            style={{ width: 25 }}
-          />
-          <Text>Graduated university</Text>
+      <ScrollView>
+        <View style={styles.header}>
+          <Image source={{ uri: bg }} style={styles.image} />
+          <Image source={{ uri: dummy_img }} style={styles.porfileImage} />
+          <Text style={styles.name}>ProfileScreen</Text>
         </View>
 
-        <View style={styles.textLine}>
-          <Ionicons name="time" size={18} color="gray" style={{ width: 25 }} />
-          <Text>Joined on October 2013</Text>
+        {/* button container */}
+        <View style={styles.buttoncontainer}>
+          <TouchableOpacity style={styles.btn}>
+            <AntDesign name="plus" width={22} color={"white"} />
+            <Text style={styles.btntxt}>Add to story</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn}>
+            <MaterialCommunityIcons name="pencil" width={22} color={"white"} />
+            <Text style={styles.btntxt}>Edit Profile</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.btn, { width: "50", flex: 0, aspectRatio: 1 }]}
+          >
+            <MaterialCommunityIcons name="logout" width={22} color={"white"} />
+          </TouchableOpacity>
         </View>
 
-        <View style={styles.textLine}>
-          <Entypo
-            name="location-pin"
-            size={18}
-            color="gray"
-            style={{ width: 25 }}
-          />
-          <Text>From Tenerife</Text>
+        {/* data texxt  */}
+        <View style={styles.textdata}>
+          <View style={styles.textLine}>
+            <Entypo
+              name="graduation-cap"
+              size={18}
+              color="gray"
+              style={{ width: 25 }}
+            />
+            <Text>Graduated university</Text>
+          </View>
+
+          <View style={styles.textLine}>
+            <Ionicons name="time" size={18} color="gray" style={{ width: 25 }} />
+            <Text>Joined on October 2013</Text>
+          </View>
+
+          <View style={styles.textLine}>
+            <Entypo
+              name="location-pin"
+              size={18}
+              color="gray"
+              style={{ width: 25 }}
+            />
+            <Text>From Tenerife</Text>
+          </View>
         </View>
-      </View>
-      
-      <Text style={styles.posttxt}>Posts</Text>
+
+        <Text style={styles.posttxt}>Posts</Text>
 
 
-      <FlatList 
-       data={user.posts}
-       renderItem={({ item }) =>  <FeedPost post={item} />}
-      />
-      
+        <FlatList
+          data={user.posts}
+          renderItem={({ item }) => <FeedPost post={item} />}
+        />
+
+      </ScrollView >
     </View>
+
   );
 };
 
@@ -124,6 +129,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+
+    margin: 5,
   },
 
   btn: {
@@ -136,7 +143,7 @@ const styles = StyleSheet.create({
   },
   btntxt: {
     color: "white",
-    fontSize: 20,
+    fontSize: 13,
   },
   //   data text
   textLine: {
@@ -149,12 +156,12 @@ const styles = StyleSheet.create({
     marginTop: 20,
     borderBottomWidth: 1,
   },
-//   
-posttxt:{
-    fontSize:25 ,
-    fontWeight:'700',
-    margin:10,
-    color:'gray'
+  //   
+  posttxt: {
+    fontSize: 25,
+    fontWeight: '700',
+    margin: 10,
+    color: 'gray'
 
-}
+  }
 });
