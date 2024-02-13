@@ -8,8 +8,11 @@ import {
   ScrollView,
 } from "react-native";
 import FeedPost from "../components/FeedPost";
-import React from "react";
+import React, { useEffect } from "react";
 import user from "../../assets/data/user.json";
+import { useNavigation } from "@react-navigation/native";
+import { LogBox } from "react-native";
+
 import {
   AntDesign,
   MaterialCommunityIcons,
@@ -18,15 +21,24 @@ import {
   Entypo,
 } from "@expo/vector-icons";
 
-
-
 const bg = "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/1.jpg";
 const dummy_img =
   "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/elon.png";
 
-const ProfileScreen = () => {
-  return (
+// component
 
+const ProfileScreen = () => {
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
+  }, []);
+
+  const signout = () => {
+    console.warn("signout");
+  };
+
+  return (
     <View style={styles.headerconatainer}>
       <ScrollView>
         <View style={styles.header}>
@@ -38,17 +50,31 @@ const ProfileScreen = () => {
         {/* button container */}
         <View style={styles.buttoncontainer}>
           <TouchableOpacity style={styles.btn}>
-            <AntDesign name="plus" width={22} color={"white"} />
+            <AntDesign name="plus" size={18} width={19} color={"white"} />
             <Text style={styles.btntxt}>Add to story</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.btn}>
-            <MaterialCommunityIcons name="pencil" width={22} color={"white"} />
+          <TouchableOpacity
+            style={styles.btn}
+            onPress={() => navigation.navigate("update Profile")}
+          >
+            <MaterialCommunityIcons
+              name="pencil"
+              size={18}
+              width={22}
+              color={"white"}
+            />
             <Text style={styles.btntxt}>Edit Profile</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.btn, { width: "50", flex: 0, aspectRatio: 1 }]}
+            onPress={() => signout()}
           >
-            <MaterialCommunityIcons name="logout" width={22} color={"white"} />
+            <MaterialCommunityIcons
+              name="logout"
+              size={18}
+              width={22}
+              color={"white"}
+            />
           </TouchableOpacity>
         </View>
 
@@ -65,7 +91,12 @@ const ProfileScreen = () => {
           </View>
 
           <View style={styles.textLine}>
-            <Ionicons name="time" size={18} color="gray" style={{ width: 25 }} />
+            <Ionicons
+              name="time"
+              size={18}
+              color="gray"
+              style={{ width: 25 }}
+            />
             <Text>Joined on October 2013</Text>
           </View>
 
@@ -82,15 +113,12 @@ const ProfileScreen = () => {
 
         <Text style={styles.posttxt}>Posts</Text>
 
-
         <FlatList
           data={user.posts}
           renderItem={({ item }) => <FeedPost post={item} />}
         />
-
-      </ScrollView >
+      </ScrollView>
     </View>
-
   );
 };
 
@@ -129,13 +157,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-
-    margin: 5,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    paddingVertical: 7,
   },
 
   btn: {
     backgroundColor: "royalblue",
-    padding: 10,
+    padding: 8,
     borderRadius: 10,
     alignItems: "center",
     flexDirection: "row",
@@ -143,25 +171,25 @@ const styles = StyleSheet.create({
   },
   btntxt: {
     color: "white",
-    fontSize: 13,
+    fontSize: 20,
+    fontWeight: "500",
   },
   //   data text
   textLine: {
     flexDirection: "row",
-    marginVertical: 5,
+    paddingVertical: 10,
     alignSelf: "stretch",
     alignItems: "center",
   },
   textdata: {
-    marginTop: 20,
-    borderBottomWidth: 1,
+    marginTop: 10,
+    borderBottomWidth: StyleSheet.hairlineWidth,
   },
-  //   
+  //
   posttxt: {
     fontSize: 25,
-    fontWeight: '700',
+    fontWeight: "700",
     margin: 10,
-    color: 'gray'
-
-  }
+    color: "gray",
+  },
 });

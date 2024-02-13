@@ -12,12 +12,13 @@ const user = {
 };
 
 const CreatePost = () => {
+  const navigation = useNavigation();
 
   const [description, setdescription] = useState("");
   const [postimage, setpostimage] = useState(null)
 
 
-  const log = () => {
+  const submit = () => {
     console.warn(description);
     setdescription("");
     navigation.goBack();
@@ -35,7 +36,7 @@ const CreatePost = () => {
     console.log(result);
 
     if (!result.canceled) {
-      setpostimage(result.uri);
+      setpostimage(result.assets[0].uri);
     }
   };
 
@@ -110,6 +111,7 @@ const styles = StyleSheet.create({
   },
   setterimage:{
     width:'50%',
-    aspectRatio:1,
+    aspectRatio:4/3,
+    alignSelf:'center'
   }
 });

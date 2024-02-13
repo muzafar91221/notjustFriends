@@ -4,14 +4,16 @@ import { StatusBar } from "expo-status-bar";
 import React from 'react'
 import Navigator from "./src/Navigation";
 import ProfileUpdate from "./src/screens/ProfileUpdate";
+import ProfileScreen from "./src/screens/ProfileScreen";
 
 
 const App = () => {
   return (
     <View style={styles.container}>
       
-     {/* <Navigator/> */}
-     <ProfileUpdate/>
+     <Navigator/>
+     {/* <ProfileUpdate/>
+    <ProfileScreen></ProfileScreen> */}
 
       <StatusBar style="auto" />
     </View>
