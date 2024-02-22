@@ -3,9 +3,15 @@ import { StatusBar } from "expo-status-bar";
 
 import React from 'react'
 import Navigator from "./src/Navigation";
-import ProfileUpdate from "./src/screens/ProfileUpdate";
-import ProfileScreen from "./src/screens/ProfileScreen";
 
+import { Amplify, Auth } from "aws-amplify";
+
+import awsconfig from './amplifyconfiguration.json'
+import { withAuthenticator } from 'aws-amplify-react-native';
+
+
+Auth.configure(awsconfig)
+// Amplify.configure({ ...awsconfig, Analytics: { disabled: true } });
 
 const App = () => {
   return (
@@ -20,7 +26,6 @@ const App = () => {
   );
 };
 
-export default App;
 
 const styles = StyleSheet.create({
   container: {
@@ -40,3 +45,4 @@ const styles = StyleSheet.create({
       //   // backgroundColor:'lightgray'
       // },
 
+export default withAuthenticator(App);

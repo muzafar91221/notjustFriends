@@ -12,6 +12,7 @@ import React, { useEffect } from "react";
 import user from "../../assets/data/user.json";
 import { useNavigation } from "@react-navigation/native";
 import { LogBox } from "react-native";
+import { Auth } from "aws-amplify";
 
 import {
   AntDesign,
@@ -35,7 +36,7 @@ const ProfileScreen = () => {
   }, []);
 
   const signout = () => {
-    console.warn("signout");
+    Auth.signOut()
   };
 
   return (

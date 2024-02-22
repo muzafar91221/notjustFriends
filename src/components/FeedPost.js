@@ -8,7 +8,7 @@ import {
 import LikeImage from "../../assets/images/like.png";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import ProfileScreen from "../screens/ProfileScreen";
+
 
 /* Post component */
 export default function FeedPost({ post }) {
